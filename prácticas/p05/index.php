@@ -125,6 +125,17 @@
     }
 
     mostrarGlobales();
+
+    $a = "7 personas";
+    $b = (integer) $a; // $b = 7, toma solo el número inicial de la cadena
+
+    $a = "9E3";
+    $c = (double) $a; // $c = 9000.0, convierte la notación científica a double
+
+    // Mostrar resultados
+    echo "<p>Valor de \$a: $a</p>"; // $a = "9E3"
+    echo "<p>Valor de \$b: $b</p>"; // $b = 7
+    echo "<p>Valor de \$c: $c</p>"; // $c = 9000.0
     ?>
 </body>
 </html>
