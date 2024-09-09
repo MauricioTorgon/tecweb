@@ -89,6 +89,42 @@
      $z[0] = "MySQL"; // Cambia el valor de $z[0]
      echo "<h2>Después de \$z[0] = 'MySQL';</h2>";
      var_dump($z); // Muestra el contenido del arreglo $z
+//CUARTO INCISO.
+    // Declaración de variables globales
+    $a = "PHP5";
+    $b = "5a version de PHP";
+    $c = intval($b) * 10; // Convierte la parte numérica de $b
+    $z[] = &$a;
+
+    // Mostrar variables utilizando $GLOBALS
+    echo "<h2>Usando \$GLOBALS</h2>";
+    echo "<p>Valor de \$GLOBALS['a']: " . $GLOBALS['a'] . "</p>";
+    echo "<p>Valor de \$GLOBALS['b']: " . $GLOBALS['b'] . "</p>";
+    echo "<p>Valor de \$GLOBALS['c']: " . $GLOBALS['c'] . "</p>";
+    echo "<p>Valor de \$GLOBALS['z'][0]: " . $GLOBALS['z'][0] . "</p>";
+
+    // Modificar valor usando $GLOBALS
+    $GLOBALS['a'] = "PHP server";
+    $GLOBALS['b'] = $GLOBALS['a'] . " updated";
+
+    echo "<h2>Valores después de modificar con \$GLOBALS</h2>";
+    echo "<p>Valor de \$GLOBALS['a'] (modificado): " . $GLOBALS['a'] . "</p>";
+    echo "<p>Valor de \$GLOBALS['b'] (modificado): " . $GLOBALS['b'] . "</p>";
+    ?>
+
+    <?php
+    // Usando el modificador global dentro de una función
+    function mostrarGlobales() {
+        global $a, $b, $c, $z;
+
+        echo "<h2>Usando el modificador global</h2>";
+        echo "<p>Valor de \$a: $a</p>";
+        echo "<p>Valor de \$b: $b</p>";
+        echo "<p>Valor de \$c: $c</p>";
+        echo "<p>Valor de \$z[0]: $z[0]</p>";
+    }
+
+    mostrarGlobales();
     ?>
 </body>
 </html>
