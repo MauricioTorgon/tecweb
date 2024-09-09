@@ -6,7 +6,7 @@
 </head>
 <body>
     <?php
-    //INCISO 1: Variables válidas
+//INCISO 1: Variables válidas
     $_myvar = "Esta variable es válida. Los nombres de variables pueden comenzar con un guion bajo.";
     $_7var = "Esta variable es válida. Los nombres de variables pueden comenzar con un guion bajo y luego un número.";
     $myvar = "Esta variable es válida. Las variables pueden comenzar con una letra.";
@@ -30,7 +30,7 @@
     // Liberar variables
     unset($_myvar, $_7var, $myvar, $var7, $_element1);
 
-    // SERGUNDO INCISO. Primer bloque de asignaciones:
+// SERGUNDO INCISO. Primer bloque de asignaciones:
     $a = "ManejadorSQL";
     $b = 'MySQL';
     $c = &$a; // $c es una referencia a $a
@@ -54,7 +54,41 @@
     echo "<p>En el segundo bloque de asignaciones, cuando \$a cambia a \"PHP server\", tanto \$b como \$c apuntan a este nuevo valor. 
     Esto ocurre porque \$b se convirtió en una referencia a \$a, y \$c también es una referencia previa a \$a. 
     Por lo tanto, cualquier cambio en \$a se refleja en ambas variables (\$b y \$c).</p>";
-
+//TERCER INCISO.
+     // Primera asignación
+     $a = "PHP5";
+     echo "<h2>Después de \$a = 'PHP5';</h2>";
+     var_dump($a); // Muestra el valor y el tipo de $a
+ 
+     // Asignación por referencia
+     $z[] = &$a;
+     echo "<h2>Después de \$z[] = &\$a;</h2>";
+     var_dump($z); // Muestra el contenido del arreglo $z
+ 
+     // Segunda asignación
+     $b = "5a version de PHP";
+     echo "<h2>Después de \$b = '5a version de PHP';</h2>";
+     var_dump($b); // Muestra el valor y el tipo de $b
+ 
+     // Tercera asignación - genera el warning
+     $c = $b * 10; // Intento de multiplicar una cadena no numérica
+     echo "<h2>Después de \$c = \$b * 10;</h2>";
+     var_dump($c); // Muestra el valor y el tipo de $c (probablemente será un valor numérico)
+ 
+     // Cuarta asignación
+     $a .= $b; // Concatenación de $a con $b
+     echo "<h2>Después de \$a .= \$b;</h2>";
+     var_dump($a); // Muestra el nuevo valor de $a
+ 
+     // Quinta asignación
+     $b *= $c; // Multiplicación de $b y $c (esto será posible ahora que $c es numérico)
+     echo "<h2>Después de \$b *= \$c;</h2>";
+     var_dump($b); // Muestra el nuevo valor de $b
+ 
+     // Sexta asignación
+     $z[0] = "MySQL"; // Cambia el valor de $z[0]
+     echo "<h2>Después de \$z[0] = 'MySQL';</h2>";
+     var_dump($z); // Muestra el contenido del arreglo $z
     ?>
 </body>
 </html>
