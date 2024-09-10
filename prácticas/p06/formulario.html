@@ -1,114 +1,76 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
+<html>
+  <head>
     <meta charset="utf-8">
     <title>Registro al Concurso</title>
     <style type="text/css">
+      
+       p.inline, select.inline {
+        display: inline-block; /* Muestra los elementos en la misma línea */
+        vertical-align: middle; /* Alinea ambos verticalmente */
+        margin: 0; /* Elimina el margen para evitar saltos de línea adicionales */
+      }
+
       ol, ul {
         list-style-type: none;
       }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
 
     <h1>Registro al Concurso &ldquo;Chidos mis Tenis&rdquo;</h1>
 
-    <p>¿Quieres cambiar tus viejos tenis por un par personalizado de Tenis Mike&reg;?<br><br>
-      Justifica el por qué tus tenis se <em>tienen que</em> ir y tú puedes ser uno de los diez afortunados ganadores.
+    <p>¿Quieres cambiar tus viejos tenis por un par personalizado de Tenis Mike&#174;?
+      <br><br>Justifica el por qué tus tenis se <em>tienen que</em> ir y tú puedes ser uno de los diez afortunados ganadores.
     </p>
 
-    <p>Información del Participante</p>
+    <fieldset>
+      <legend>Información Personal</legend>
 
-    <!-- Inicio del formulario -->
-    <form action="http://localhost/mike/concurso.php" method="POST">
-
+    <form action="concurso.php" method="POST">
       <ul>
-        <!-- Nombre -->
-        <li>
-          Nombre: <input type="text" name="name" required>
-        </li>
-        
-        <!-- Dirección de E-mail -->
-        <li>
-          Dirección de E-mail: <input type="email" name="email" required>
-        </li>
-      
-        <!-- Número Telefónico -->
-        <li>
-          Número Telefónico: <input type="tel" name="phone" pattern="[0-9]{10}" placeholder="5551234567" required>
-          <small>Formato: 10 dígitos</small>
-        </li>
-
-        <!-- Justificación -->
-        <li>
-          Mis tenis son tan feos porque...<br>
-          <textarea name="story" rows="4" cols="60" maxlength="500"
-            placeholder="Describe brevemente por qué tus tenis son tan feos" required></textarea>
-        </li>
+        <li>Nombre: <input type="text" name="name"></li>
+        <li>Dirección de E-mail: <input type="text" name="email"></li>
+        <li>Número Telefónico: <input type="text" name="phone"></li>
+        <li>Mis tenis son tan feos porque... 
+        <li><textarea name="story" rows="4" cols="60" maxlength="300"
+          placeholder="No más de 300 caracteres de longitud"></textarea></li>
       </ul>
+    </fieldset>
 
-      <!-- Botones submit y reset -->
-      <p>
-        <input type="submit" value="Enviar mi registro">
-        <input type="reset" value="Restablecer formulario">
-      </p>
+    <h1>Diseña tus Mike personalizados</h1>
 
-    <!-- Comenzado selección de tenis -->
-    <h2>Diseña tus Mike personalizados:</h2>
+    <fieldset>
+      <legend>Diseño personalizado del tenis</legend>
 
-    <h2>Diseña tus Mike personalizados:</h2>
-
-    <p>Diseño personalizado del Tenis</p>
-
-    <!-- Selección de Color -->
-    <p>Color <em>(escoge uno)</em>:</p>
+    <fieldset>
+      <legend>Color (escoge uno)</legend>
+      
     <ul>
-      <li>
-        <input type="radio" id="rojo" name="color" value="rojo" checked>
-        <label for="rojo">Rojo</label>
-      </li>
-      <li>
-        <input type="radio" id="azul" name="color" value="azul">
-        <label for="azul">Azul</label>
-      </li>
-      <li>
-        <input type="radio" id="negro" name="color" value="negro">
-        <label for="negro">Negro</label>
-      </li>
-      <li>
-        <input type="radio" id="plateado" name="color" value="plateado">
-        <label for="plateado">Plateado</label>
-      </li>
+      <li><input type="radio" name="color" value="red"> Rojo</li>
+      <li><input type="radio" name="color" value="blue"> Azul</li>
+      <li><input type="radio" name="color" value="black"> Negro</li>
+      <li><input type="radio" name="color" value="silver"> Plateado</li>
     </ul>
+  </fieldset>
 
-    <!-- Selección de Características -->
-    <p>Características <em>(escoge tantas como quieras)</em>:</p>
+    <fieldset>
+      <legend>Características <em>(escoge tantas como quieras)</legend>
+    
     <ul>
-      <li>
-        <input type="checkbox" id="cordones" name="features[]" value="cordones_brillantes">
-        <label for="cordones">Cordones brillantes</label>
-      </li>
-      <li>
-        <input type="checkbox" id="logo" name="features[]" value="logo_metalico" checked>
-        <label for="logo">Logo metálico</label>
-      </li>
-      <li>
-        <input type="checkbox" id="suela" name="features[]" value="suela_luminosa">
-        <label for="suela">Suela luminosa</label>
-      </li>
-      <li>
-        <input type="checkbox" id="wifi" name="features[]" value="wifi_integrado">
-        <label for="wifi">WiFi integrado</label>
-      </li>
+      <li><input type="checkbox" name="features[]" value="laces">Cordones Brillantes</li>
+      <li><input type="checkbox" name="features[]" value="logo" checked>Logo metalico</li>
+      <li><input type="checkbox" name="features[]" value="light">Suela luminosa</li>
+      <li><input type="checkbox" name="features[]" value="wifi">WiFi-integrado</li>
     </ul>
+    </fieldset>
 
+    <fieldset>
+      <legend>Talla</legend>
 
-    <!-- Selección de Talla -->
-    <p>Talla</p>
-    <p>Las medidas reflejan el estándar masculino:</p>
-    <select name="talla" id="talla" required>
-      <option value="">Selecciona tu talla</option>
+      <p class="inline">Las medidas reflejan el estándar masculino:</p>
+      <select name="size" size="1" class="inline"> 
       <option value="3">3</option>
       <option value="4">4</option>
       <option value="5">5</option>
@@ -118,11 +80,18 @@
       <option value="9">9</option>
       <option value="10">10</option>
       <option value="11">11</option>
-    </select><br><br>
-
-    </form>
-
+    </select>
+    </fieldset>
+  </fieldset>
     
+  <p>
+    <!-- Botones submit y reset -->
+    <input type="submit" value="¡Chidos mis tenis!">
+    <input type="reset" value="Restablecer Formulario">
+  </p>
+    
+  </form>
+  </body>
 
-</body>
+  
 </html>
