@@ -23,25 +23,25 @@
     <!-- Inicio del formulario -->
     <form action="procesar_registro.php" method="POST">
       <ul>
-        <!-- Nombre -->
-        <li>
-          <label for="nombre">Nombre:</label>
-          <input type="text" id="nombre" name="nombre" required>
-        </li>
+        <ul>
+          <!-- Nombre -->
+          <li>
+            Nombre: <input type="text" name="name" required>
+          </li>
+          
+          <!-- Dirección de E-mail -->
+          <li>
+            Dirección de E-mail: <input type="email" name="email" required>
+          </li>
         
-        <!-- Dirección de E-mail -->
-        <li>
-          <label for="email">Dirección de E-mail:</label>
-          <input type="email" id="email" name="email" required>
-        </li>
-
-        <!-- Número Telefónico -->
-        <li>
-          <label for="telefono">Número Telefónico:</label>
-          <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" placeholder="5551234567" required>
-          <small>Formato: 10 dígitos</small>
-        </li>
-
+          <!-- Número Telefónico -->
+          <li>
+            Número Telefónico: <input type="tel" name="phone" pattern="[0-9]{10}" placeholder="5551234567" required>
+            <small>Formato: 10 dígitos</small>
+          </li>
+        </ul>
+        
+        
         <!-- Justificación -->
         <li>
           <label for="justificacion">Mis tenis son tan feos porque...</label>
