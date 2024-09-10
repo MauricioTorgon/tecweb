@@ -66,6 +66,26 @@
         }
         ?>
 
+        <h2>Ejercicio 3</h2>
+        <?php> 
+                // Obtener el número dado a través de la variable superglobal $_GET
+        $numeroDado = isset($_GET['num']) ? (int)$_GET['num'] : 1;
+
+        if ($numeroDado <= 0) {
+            echo "Por favor, proporciona un número mayor a 0.";
+            exit;
+        }
+
+        // Usar la función con ciclo while
+        $numeroConWhile = encontrarMultiploConWhile($numeroDado);
+        echo "Con ciclo while: El primer número entero aleatorio múltiplo de $numeroDado es: $numeroConWhile<br>";
+
+        // Usar la función con ciclo do-while
+        $numeroConDoWhile = encontrarMultiploConDoWhile($numeroDado);
+        echo "Con ciclo do-while: El primer número entero aleatorio múltiplo de $numeroDado es: $numeroConDoWhile";
+        ?>
+        
+
 
 </body>
 </html>

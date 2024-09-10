@@ -46,6 +46,38 @@ function generarSecuenciaImparParImpar() {
     ];
 }
 
+/**
+ * Encuentra el primer número entero aleatorio que sea múltiplo de un número dado utilizando un ciclo while.
+ *
+ * @param int $numeroDado El número del cual el aleatorio debe ser múltiplo.
+ * @return int El primer número aleatorio que es múltiplo del número dado.
+ */
+function encontrarMultiploConWhile($numeroDado) {
+    $encontrado = false;
+
+    while (!$encontrado) {
+        $numeroAleatorio = rand(1, 1000);  // Generar un número aleatorio entre 1 y 1000
+        if ($numeroAleatorio % $numeroDado === 0) {
+            $encontrado = true;
+            return $numeroAleatorio;
+        }
+    }
+}
+
+/**
+ * Encuentra el primer número entero aleatorio que sea múltiplo de un número dado utilizando un ciclo do-while.
+ *
+ * @param int $numeroDado El número del cual el aleatorio debe ser múltiplo.
+ * @return int El primer número aleatorio que es múltiplo del número dado.
+ */
+function encontrarMultiploConDoWhile($numeroDado) {
+    do {
+        $numeroAleatorio = rand(1, 1000);  // Generar un número aleatorio entre 1 y 1000
+    } while ($numeroAleatorio % $numeroDado !== 0);
+
+    return $numeroAleatorio;
+}
+
 ?>
 
 
