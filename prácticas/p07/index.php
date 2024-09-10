@@ -26,8 +26,46 @@
         } else {
             echo "No se ha proporcionado ningún número en la URL.";
         }
-
-        echo postear();
     ?>
+        <h2>Ejemplo de POST</h2>
+        <form action="index.php" method="post">
+            Name: <input type="text" name="name"><br>
+            E-mail: <input type="text" name="email"><br>
+            <input type="submit">
+        </form>
+        <br>
+        <?php
+        if (isset($_POST["name"]) && isset($_POST["email"])) {
+            echo ($_POST["name"]);  
+            echo '<br>';
+            echo ($_POST["email"]);
+        }
+        ?>
+
+        <h2>Ejercicio 2</h2>
+        <?php
+        // Comprobar si se requiere ejecutar el ejercicio 2
+        if (isset($_GET['ejercicio']) && $_GET['ejercicio'] == 2) {
+            // Llamar a la función para generar la secuencia impar, par, impar
+            $resultado = generarSecuenciaImparParImpar();
+
+            // Mostrar la matriz generada
+            echo "<h3>Matriz generada:</h3>";
+            echo "<table border='1'>";
+            foreach ($resultado['matriz'] as $fila) {
+                echo "<tr>";
+                foreach ($fila as $numero) {
+                    echo "<td>$numero</td>";
+                }
+                echo "</tr>";
+            }
+            echo "</table>";
+
+            // Mostrar el número de iteraciones y cantidad de números generados
+            echo "<p>{$resultado['numerosGenerados']} números obtenidos en {$resultado['iteraciones']} iteraciones.</p>";
+        }
+        ?>
+
+
 </body>
 </html>

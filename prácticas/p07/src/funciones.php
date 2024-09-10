@@ -13,22 +13,40 @@ if(isset($_GET['numero']))
     }
 }
 }
+
+// Función para generar la secuencia impar, par, impar
+function generarSecuenciaImparParImpar() {
+    $matriz = [];  // Inicializamos la matriz
+    $iteraciones = 0;
+    $numerosGenerados = 0;
+
+    // Ciclo que se repetirá hasta encontrar la secuencia impar, par, impar
+    do {
+        $numeros = [];
+        for ($i = 0; $i < 3; $i++) {
+            $numeroAleatorio = rand(1, 1000);  // Generar número aleatorio entre 1 y 1000
+            $numeros[] = $numeroAleatorio;
+        }
+
+        // Guardar la secuencia generada en la matriz
+        $matriz[] = $numeros;
+        $iteraciones++;
+        $numerosGenerados += 3;
+
+        // Verificar si la secuencia es impar, par, impar
+        $condicionImparParImpar = ($numeros[0] % 2 != 0) && ($numeros[1] % 2 == 0) && ($numeros[2] % 2 != 0);
+
+    } while (!$condicionImparParImpar);
+
+    // Retornar la matriz, el número de iteraciones y el total de números generados
+    return [
+        'matriz' => $matriz,
+        'iteraciones' => $iteraciones,
+        'numerosGenerados' => $numerosGenerados
+    ];
+}
+
 ?>
 
-<h2>Ejemplo de POST</h2>
-<form action="http://localhost/tecweb/practicas/p07/index.php" method="post">
-Name: <input type="text" name="name"><br>
-E-mail: <input type="text" name="email"><br>
-<input type="submit">
-</form>
-<br>
-<?php
-function postear(){
-if(isset($_POST["name"]) && isset($_POST["email"]))
-    {
-        echo $_POST["name"];
-        echo '<br>';
-        echo $_POST["email"];
-    }
-}
-?>
+
+
