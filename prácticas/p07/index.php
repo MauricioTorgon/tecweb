@@ -26,6 +26,8 @@
         } else {
             echo "No se ha proporcionado ningún número en la URL.";
         }
+
+        echo postear();
     ?>
 </body>
 </html>
