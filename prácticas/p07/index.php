@@ -172,6 +172,102 @@
             </html>";
         }
         ?>
+        <h2> Ejercicio 6</h2>
+        <?php
+        // Arreglo asociativo del parque vehicular
+        $vehiculos = array(
+            "ABC1234" => array(
+                "Auto" => array(
+                    "marca" => "HONDA",
+                    "modelo" => 2020,
+                    "tipo" => "camioneta"
+                ),
+                "Propietario" => array(
+                    "nombre" => "Alfonzo Esparza",
+                    "ciudad" => "Puebla, Pue.",
+                    "direccion" => "C.U., Jardines de San Manuel"
+                )
+            ),
+            "DEF5678" => array(
+                "Auto" => array(
+                    "marca" => "MAZDA",
+                    "modelo" => 2019,
+                    "tipo" => "sedan"
+                ),
+                "Propietario" => array(
+                    "nombre" => "Ma. del Consuelo Molina",
+                    "ciudad" => "Puebla, Pue.",
+                    "direccion" => "97 oriente"
+                )
+            ),
+            // Agrega más registros hasta completar 15 autos
+            "GHI9012" => array(
+                "Auto" => array(
+                    "marca" => "TOYOTA",
+                    "modelo" => 2021,
+                    "tipo" => "hachback"
+                ),
+                "Propietario" => array(
+                    "nombre" => "Roberto Pérez",
+                    "ciudad" => "Guadalajara, Jal.",
+                    "direccion" => "Avenida Chapultepec"
+                )
+            ),
+            // Puedes agregar más autos aquí siguiendo la misma estructura
+        );
 
+        // Verificar si se envió el formulario
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $matricula = isset($_POST['matricula']) ? $_POST['matricula'] : '';
+            
+            // Si se ingresó una matrícula, mostrar la información del auto
+            if (!empty($matricula)) {
+                if (array_key_exists($matricula, $vehiculos)) {
+                    echo "<h2>Información del Vehículo con Matrícula $matricula</h2>";
+                    echo "<strong>Auto:</strong><br>";
+                    echo "Marca: " . $vehiculos[$matricula]['Auto']['marca'] . "<br>";
+                    echo "Modelo: " . $vehiculos[$matricula]['Auto']['modelo'] . "<br>";
+                    echo "Tipo: " . $vehiculos[$matricula]['Auto']['tipo'] . "<br><br>";
+                    echo "<strong>Propietario:</strong><br>";
+                    echo "Nombre: " . $vehiculos[$matricula]['Propietario']['nombre'] . "<br>";
+                    echo "Ciudad: " . $vehiculos[$matricula]['Propietario']['ciudad'] . "<br>";
+                    echo "Dirección: " . $vehiculos[$matricula]['Propietario']['direccion'] . "<br>";
+                } else {
+                    echo "<h2>No se encontró un vehículo con esa matrícula.</h2>";
+                }
+            } else {
+                // Si no se ingresó matrícula, mostrar todos los vehículos registrados
+                echo "<h2>Listado Completo de Vehículos Registrados</h2>";
+                echo "<pre>";
+                print_r($vehiculos);
+                echo "</pre>";
+            }
+        }
+        ?>
+
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Consulta de Vehículos</title>
+        </head>
+        <body>
+            <h2>Consulta de Vehículos</h2>
+            <form method="post" action="">
+                <label for="matricula">Ingresa la matrícula del vehículo (ejemplo: ABC1234):</label><br>
+                <input type="text" id="matricula" name="matricula" placeholder="Matrícula" maxlength="7"><br><br>
+                <input type="submit" value="Consultar">
+            </form>
+
+            <form method="post" action="">
+                <input type="hidden" name="matricula" value="">
+                <input type="submit" value="Mostrar todos los vehículos">
+            </form>
+        </body>
+        </html>
+
+
+        
 </body>
 </html>
