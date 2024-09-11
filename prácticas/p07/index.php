@@ -68,7 +68,8 @@
         
         <h2>Ejercicio 3</h2>
         <?php
-        
+        // Comprobar si se requiere ejecutar el ejercicio 2
+        if (isset($_GET['ejercicio']) && $_GET['ejercicio'] == 3) {
         // Obtener el número dado a través de la variable superglobal $_GET
         $numeroDado = isset($_GET['num']) ? (int)$_GET['num'] : 1;
 
@@ -84,9 +85,29 @@
         // Usar la función con ciclo do-while
         $numeroConDoWhile = encontrarMultiploConDoWhile($numeroDado);
         echo "Con ciclo do-while: El primer número entero aleatorio múltiplo de $numeroDado es: $numeroConDoWhile";
+        }
         ?>
         
         <h2>Ejercicio 4</h2>
+        <?php
+        // Comprobar si se requiere ejecutar el ejercicio 4
+        if (isset($_GET['ejercicio']) && $_GET['ejercicio'] == 4) {
+        // Llamar a la función que crea el arreglo
+        $arregloLetras = crearArregloLetras();
+
+        // Mostrar el arreglo en una tabla usando un ciclo foreach
+        echo "<h2>Tabla de Letras ASCII</h2>";
+        echo "<table border='1' cellpadding='5' cellspacing='0'>";
+        echo "<tr><th>Índice ASCII</th><th>Letra</th></tr>";
+
+        foreach ($arregloLetras as $key => $value) {
+            echo "<tr>";
+            echo "<td>$key</td>";
+            echo "<td>$value</td>";
+            echo "</tr>";
+        }
+        }
+        ?>
 
 </body>
 </html>
