@@ -108,6 +108,70 @@
         }
         }
         ?>
+        <h2> Ejercicio 5</h2>
+        <?php
+        // Verificar si el formulario ha sido enviado
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Recuperar los valores enviados por el formulario
+            $edad = isset($_POST['edad']) ? (int)$_POST['edad'] : null;
+            $sexo = isset($_POST['sexo']) ? $_POST['sexo'] : '';
+
+            // Validar los datos
+            if ($sexo === 'femenino' && $edad >= 18 && $edad <= 35) {
+                // Mostrar mensaje de bienvenida si cumple las condiciones
+                echo "<!DOCTYPE html>
+                <html lang='es'>
+                <head>
+                    <meta charset='UTF-8'>
+                    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+                    <title>Mensaje de Bienvenida</title>
+                </head>
+                <body>
+                    <h2>Bienvenida, usted está en el rango de edad permitido.</h2>
+                </body>
+                </html>";
+            } else {
+                // Mostrar mensaje de error si no cumple las condiciones
+                echo "<!DOCTYPE html>
+                <html lang='es'>
+                <head>
+                    <meta charset='UTF-8'>
+                    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+                    <title>Error</title>
+                </head>
+                <body>
+                    <h2>Error: No cumple con los requisitos de edad o sexo.</h2>
+                </body>
+                </html>";
+            }
+        } else {
+            // Si no se ha enviado el formulario, mostrar el formulario HTML
+            echo "<!DOCTYPE html>
+            <html lang='es'>
+            <head>
+                <meta charset='UTF-8'>
+                <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+                <title>Formulario de Solicitud</title>
+            </head>
+            <body>
+                <h2>Formulario de Solicitud</h2>
+                <form action='' method='post'>
+                    <label for='edad'>Edad:</label>
+                    <input type='number' name='edad' id='edad' required><br><br>
+                    
+                    <label for='sexo'>Sexo:</label>
+                    <select name='sexo' id='sexo' required>
+                        <option value=''>Seleccione una opción</option>
+                        <option value='femenino'>Femenino</option>
+                        <option value='masculino'>Masculino</option>
+                    </select><br><br>
+                    
+                    <input type='submit' value='Enviar'>
+                </form>
+            </body>
+            </html>";
+        }
+        ?>
 
 </body>
 </html>
