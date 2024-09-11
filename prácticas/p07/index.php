@@ -65,10 +65,11 @@
             echo "<p>{$resultado['numerosGenerados']} números obtenidos en {$resultado['iteraciones']} iteraciones.</p>";
         }
         ?>
-
+        
         <h2>Ejercicio 3</h2>
-        <?php> 
-                // Obtener el número dado a través de la variable superglobal $_GET
+        <?php
+        
+        // Obtener el número dado a través de la variable superglobal $_GET
         $numeroDado = isset($_GET['num']) ? (int)$_GET['num'] : 1;
 
         if ($numeroDado <= 0) {
@@ -85,7 +86,7 @@
         echo "Con ciclo do-while: El primer número entero aleatorio múltiplo de $numeroDado es: $numeroConDoWhile";
         ?>
         
-
+        <h2>Ejercicio 4</h2>
 
 </body>
 </html>

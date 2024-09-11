@@ -78,7 +78,20 @@ function encontrarMultiploConDoWhile($numeroDado) {
     return $numeroAleatorio;
 }
 
+/**
+ * Crea un arreglo cuyos índices van de 97 a 122, con valores correspondientes a las letras de 'a' a 'z'.
+ *
+ * @return array El arreglo con índices ASCII de 97 a 122 y letras como valores.
+ */
+function crearArregloLetras() {
+    $arreglo = [];
+    
+    // Llenar el arreglo con un ciclo for, utilizando la función chr() para obtener la letra correspondiente
+    for ($i = 97; $i <= 122; $i++) {
+        $arreglo[$i] = chr($i);
+    }
+
+    return $arreglo;
+}
+
 ?>
-
-
-
