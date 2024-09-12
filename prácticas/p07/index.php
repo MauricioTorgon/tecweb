@@ -200,7 +200,6 @@
                     "direccion" => "97 oriente"
                 )
             ),
-            // Agrega más registros hasta completar 15 autos
             "GHI9012" => array(
                 "Auto" => array(
                     "marca" => "TOYOTA",
@@ -213,8 +212,152 @@
                     "direccion" => "Avenida Chapultepec"
                 )
             ),
-            // Puedes agregar más autos aquí siguiendo la misma estructura
+            "JKL3456" => array(
+                "Auto" => array(
+                    "marca" => "FORD",
+                    "modelo" => 2018,
+                    "tipo" => "sedan"
+                ),
+                "Propietario" => array(
+                    "nombre" => "María García",
+                    "ciudad" => "Monterrey, NL",
+                    "direccion" => "Colonia Del Valle"
+                )
+            ),
+            "MNO7890" => array(
+                "Auto" => array(
+                    "marca" => "CHEVROLET",
+                    "modelo" => 2017,
+                    "tipo" => "camioneta"
+                ),
+                "Propietario" => array(
+                    "nombre" => "Luis Ramírez",
+                    "ciudad" => "Ciudad de México, CDMX",
+                    "direccion" => "Colonia Roma Norte"
+                )
+            ),
+            "PQR2345" => array(
+                "Auto" => array(
+                    "marca" => "NISSAN",
+                    "modelo" => 2019,
+                    "tipo" => "sedan"
+                ),
+                "Propietario" => array(
+                    "nombre" => "Sofía López",
+                    "ciudad" => "Guadalajara, Jal.",
+                    "direccion" => "Zapopan Centro"
+                )
+            ),
+            "STU6789" => array(
+                "Auto" => array(
+                    "marca" => "VOLKSWAGEN",
+                    "modelo" => 2022,
+                    "tipo" => "hachback"
+                ),
+                "Propietario" => array(
+                    "nombre" => "Carlos Martínez",
+                    "ciudad" => "Puebla, Pue.",
+                    "direccion" => "Colonia La Paz"
+                )
+            ),
+            "VWX1235" => array(
+                "Auto" => array(
+                    "marca" => "BMW",
+                    "modelo" => 2021,
+                    "tipo" => "sedan"
+                ),
+                "Propietario" => array(
+                    "nombre" => "Ana Torres",
+                    "ciudad" => "Querétaro, Qro.",
+                    "direccion" => "Centro Histórico"
+                )
+            ),
+            "YZA5671" => array(
+                "Auto" => array(
+                    "marca" => "MERCEDES",
+                    "modelo" => 2020,
+                    "tipo" => "camioneta"
+                ),
+                "Propietario" => array(
+                    "nombre" => "Pedro Gutiérrez",
+                    "ciudad" => "Guadalajara, Jal.",
+                    "direccion" => "Providencia"
+                )
+            ),
+            "BCD8902" => array(
+                "Auto" => array(
+                    "marca" => "AUDI",
+                    "modelo" => 2019,
+                    "tipo" => "sedan"
+                ),
+                "Propietario" => array(
+                    "nombre" => "Isabel Hernández",
+                    "ciudad" => "Tijuana, BC",
+                    "direccion" => "Playas de Tijuana"
+                )
+            ),
+            "EFG3457" => array(
+                "Auto" => array(
+                    "marca" => "HYUNDAI",
+                    "modelo" => 2018,
+                    "tipo" => "camioneta"
+                ),
+                "Propietario" => array(
+                    "nombre" => "Miguel Flores",
+                    "ciudad" => "Toluca, EdoMex",
+                    "direccion" => "Colonia Centro"
+                )
+            ),
+            "HIJ6784" => array(
+                "Auto" => array(
+                    "marca" => "KIA",
+                    "modelo" => 2021,
+                    "tipo" => "sedan"
+                ),
+                "Propietario" => array(
+                    "nombre" => "José Sánchez",
+                    "ciudad" => "Morelia, Mich.",
+                    "direccion" => "Zona Dorada"
+                )
+            ),
+            "KLM1239" => array(
+                "Auto" => array(
+                    "marca" => "TESLA",
+                    "modelo" => 2022,
+                    "tipo" => "sedan"
+                ),
+                "Propietario" => array(
+                    "nombre" => "Fernanda Jiménez",
+                    "ciudad" => "León, Gto.",
+                    "direccion" => "Colonia Las Torres"
+                )
+            ),
+            "NOP4567" => array(
+                "Auto" => array(
+                    "marca" => "JEEP",
+                    "modelo" => 2021,
+                    "tipo" => "camioneta"
+                ),
+                "Propietario" => array(
+                    "nombre" => "Daniel Ortiz",
+                    "ciudad" => "Monterrey, NL",
+                    "direccion" => "Colonia Cumbres"
+                )
+            ),
+            "QRS7896" => array(
+                "Auto" => array(
+                    "marca" => "PEUGEOT",
+                    "modelo" => 2020,
+                    "tipo" => "sedan"
+                ),
+                "Propietario" => array(
+                    "nombre" => "Gabriela Morales",
+                    "ciudad" => "Ciudad de México, CDMX",
+                    "direccion" => "Colonia Del Valle"
+                )
+            )
         );
+        
 
         // Verificar si se envió el formulario
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
