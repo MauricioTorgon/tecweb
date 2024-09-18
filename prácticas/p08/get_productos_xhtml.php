@@ -22,9 +22,14 @@
     if (!empty($tope)) {
         // Conexión a la base de datos
         @$link = new mysqli('localhost', 'root', '12345678a', 'marketzone');
+
+        // Comprobamos la conexión
         if ($link->connect_errno) {
             die('<p>Falló la conexión: ' . $link->connect_error . '</p>');
         }
+
+        // Establecemos la codificación de caracteres a UTF-8
+        $link->set_charset("utf8");
 
         // Consulta a la base de datos
         if ($result = $link->query("SELECT * FROM productos WHERE unidades <= $tope")) {
@@ -54,7 +59,7 @@
                             <td>' . $row['modelo'] . '</td>
                             <td>' . $row['precio'] . '</td>
                             <td>' . $row['unidades'] . '</td>
-                            <td>' . utf8_encode($row['detalles']) . '</td>
+                            <td>' . $row['detalles'] . '</td>
                             <td><img src="' . $row['imagen'] . '" alt="Imagen del producto" /></td>
                           </tr>';
                 }
