@@ -61,13 +61,14 @@
         unset($a, $b, $c, $z);
     ?>
 
-    
     <h2>Ejercicio 4</h2>
     <?php
         $a = "PHP5";
         $z[] = &$a;
         $b = "5a version de PHP";
-        $c = $b * 10;
+        
+        // Convertir $b a entero antes de multiplicar
+        $c = intval($b) * 10;
 
         echo "Valores usando \$GLOBALS:<br>";
         echo "\$a = " . $GLOBALS['a'] . "<br>";
@@ -76,7 +77,7 @@
 
         unset($a, $b, $c, $z);
     ?>
-    
+
     <h2>Ejercicio 5</h2>
     <?php
         $a = "7 personas";
