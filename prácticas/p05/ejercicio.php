@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> 
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejericios</title>
+    <title>Ejercicios</title>
 </head>
 <body>
-    <H1>Respuesta a los ejercicios de la practica</H1>
+    <h1>Respuesta a los ejercicios de la práctica</h1>
+    
     <h2>Ejercicio 1</h2>
     <?php
         echo 'Variables válidas: $_myvar, $_7var, $myvar, $var7, $_element1'."<br>";
@@ -14,7 +15,7 @@
         echo 'Las variables necesitan empezar con $ seguidas por un guion bajo (_) o letra, sin caracteres especiales como *'."<br>";
     ?>
 
-    <h2>Ejericio 2</h2>
+    <h2>Ejercicio 2</h2>
     <?php
         $a = "ManejadorSQL";  
         $b = 'MySQL';  
@@ -28,7 +29,7 @@
 
         // Imprimir los valores de las variables actualizados
         echo '$a: ' . $a . ' $b: ' . $b . ' $c: ' . $c . "<br>";
-        echo 'Al hacer que las vairables $b y $c referencien a $a el contenido de a se copio en las demas variabels'."<br>";
+        echo 'Al hacer que las variables $b y $c referencien a $a, el contenido de $a se copió en las demás variables.'."<br>";
 
         unset($a, $b, $c);
     ?>
@@ -38,9 +39,13 @@
         $a = "PHP5";
         $z[] = &$a;
         $b = "5a version de PHP";
-        $c = $b * 10;
+
+        // Convertir $b en un valor numérico apropiado antes de usarlo en la multiplicación
+        $c = intval($b) * 10; // Convertir $b a entero antes de multiplicar
         $a .= $b;
-        $b *= $c;
+        $b = intval($b); // Convertir $b a entero
+        $b *= $c; // Línea corregida
+
         $z[0] = "MySQL";
 
         echo "Valores de las variables:<br>";
@@ -55,8 +60,9 @@
 
         unset($a, $b, $c, $z);
     ?>
-    <h2>Ejercicio 4</h2>
 
+    
+    <h2>Ejercicio 4</h2>
     <?php
         $a = "PHP5";
         $z[] = &$a;
@@ -70,8 +76,8 @@
 
         unset($a, $b, $c, $z);
     ?>
+    
     <h2>Ejercicio 5</h2>
-
     <?php
         $a = "7 personas";
         $b = (integer) $a;
@@ -87,7 +93,6 @@
     ?>
 
     <h2>Ejercicio 6</h2>
-
     <?php
         $a = "0";
         $b = "TRUE";
@@ -107,7 +112,7 @@
         unset($a, $b, $c, $d, $e, $f);  
     ?>
     
-    <h2>Ejericio 7</h2>
+    <h2>Ejercicio 7</h2>
     <?php
         echo "Versión de Apache y PHP: " . $_SERVER['SERVER_SOFTWARE'] . "<br>";
         echo "Sistema operativo del servidor: " . PHP_OS . "<br>";
