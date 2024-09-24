@@ -44,10 +44,14 @@ $result = $link->query($sql);
 if ($result->num_rows > 0) {
     echo '<p>Ya existe un producto con el mismo nombre, marca y modelo.</p>';
 } else {
+    /*
     // Insertar nuevo producto en la base de datos con la columna 'eliminado' en 0
     $sql = "INSERT INTO productos (nombre, marca, modelo, precio, detalles, unidades, imagen, eliminado) 
-            VALUES ('$nombre', '$marca', '$modelo', $precio, '$detalles', $unidades, '$imagenRuta', 0)";
+            VALUES ('$nombre', '$marca', '$modelo', $precio, '$detalles', $unidades, '$imagenRuta', 0)";*/
     
+    $sql = "INSERT INTO productos (nombre, marca, modelo, precio, detalles, unidades, imagen) 
+        VALUES ('$nombre', '$marca', '$modelo', $precio, '$detalles', $unidades, '$imagenRuta')";   
+            
     if ($link->query($sql)) {
         echo '<p>Producto registrado con éxito:</p>';
         echo '<ul>';
