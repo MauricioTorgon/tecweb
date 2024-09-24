@@ -1,4 +1,10 @@
 <?php
+// Mostrar datos recibidos para depuración
+echo '<pre>';
+print_r($_POST);
+print_r($_FILES);
+echo '</pre>';
+
 // Establecemos el encabezado para codificación UTF-8
 header("Content-Type: text/html; charset=utf-8");
 
@@ -36,11 +42,11 @@ $sql = "SELECT * FROM productos WHERE nombre = '$nombre' AND marca = '$marca' AN
 $result = $link->query($sql);
 
 if ($result->num_rows > 0) {
-    // Si ya existe un producto con el mismo nombre, marca y modelo
     echo '<p>Ya existe un producto con el mismo nombre, marca y modelo.</p>';
 } else {
-    // Insertar nuevo producto en la base de datos
-    $sql = "INSERT INTO productos (nombre, marca, modelo, precio, detalles, unidades, imagen) VALUES ('$nombre', '$marca', '$modelo', $precio, '$detalles', $unidades, '$imagenRuta')";
+    // Insertar nuevo producto en la base de datos con la columna 'eliminado' en 0
+    $sql = "INSERT INTO productos (nombre, marca, modelo, precio, detalles, unidades, imagen, eliminado) 
+            VALUES ('$nombre', '$marca', '$modelo', $precio, '$detalles', $unidades, '$imagenRuta', 0)";
     
     if ($link->query($sql)) {
         echo '<p>Producto registrado con éxito:</p>';
@@ -58,6 +64,5 @@ if ($result->num_rows > 0) {
     }
 }
 
-// Cerramos la conexión a la base de datos
 $link->close();
 ?>
