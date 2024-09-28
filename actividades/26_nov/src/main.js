@@ -79,15 +79,19 @@ function ifElseSentence(){
 
 function calificacion(){
     var nota1, nota2, nota3;
+
     nota1 = prompt('Ingresa 1ra. nota:', '');
     nota2 = prompt('Ingresa 2da. nota:', '');
     nota3 = prompt('Ingresa 3ra. nota:', '');
+
     // Convertimos los 3 string en enteros
     nota1 = parseInt(nota1);
     nota2 = parseInt(nota2);
     nota3 = parseInt(nota3);
+
     var pro;
     pro = (nota1 + nota2 + nota3) / 3;
+
     if (pro >= 7) {
         document.write('aprobado');
     } else {
@@ -97,4 +101,55 @@ function calificacion(){
             document.write('reprobado');
         }
     }
+
+}
+
+function sw(){
+    var valor;
+    valor = prompt('Ingresar un valor comprendido entre 1 y 5:', '');
+    // Convertimos a entero
+    valor = parseInt(valor);
+    switch (valor) {
+        case 1:
+            document.write('uno');
+            break;
+
+        case 2:
+            document.write('dos');
+            break;
+
+        case 3:
+            document.write('tres');
+            break;
+
+        case 4:
+            document.write('cuatro');
+            break;
+
+        case 5:
+            document.write('cinco');
+            break;
+
+        default:
+            document.write('debe ingresar un valor comprendido entre 1 y 5.');
+    }
+
+}
+
+function color(){
+    var col; 
+    col = prompt('Ingresa el color con que quieres pintar el fondo de la ventana (rojo, verde, azul)', '');
+    switch (col) {
+        case 'rojo': 
+            document.bgColor = '#ff0000';
+            break;
+
+        case 'verde': 
+            document.bgColor = '#00ff00';
+            break;
+
+        case 'azul': 
+            document.bgColor = '#0000ff';
+            break;
+    }   
 }
