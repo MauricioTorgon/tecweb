@@ -179,3 +179,38 @@ function acm(){
     document.write("La suma de los valores es " + suma + "<br>");
 
 }
+
+function dig(){
+    var valor;
+    do {
+        valor = prompt('Ingresa un valor entre 0 y 999:', '');
+        valor = parseInt(valor);
+        document.write('El valor ' + valor + ' tiene ');
+        if (valor < 10) {
+            document.write('Tiene 1 dígito');
+        } else if (valor < 100) {
+            document.write('Tiene 2 dígitos');
+        } else if (valor < 1000) {
+            document.write('Tiene 3 dígitos');
+        } else {
+            document.write('Fuera de rango');
+        }
+        document.write('<br>');
+    } while (valor != 0);
+}
+
+function forS(){
+    var f;
+    for (f = 1; f <= 10; f++) {
+        document.write(f + " ");
+    }
+};
+
+function corr(){
+    document.write("Cuidado<br>");
+    document.write("Ingresa tu documento correctamente<br>");
+    document.write("Cuidado<br>");
+    document.write("Ingresa tu documento correctamente<br>");
+    document.write("Cuidado<br>");
+    document.write("Ingresa tu documento correctamente<br>");
+};
