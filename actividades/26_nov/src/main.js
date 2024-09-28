@@ -50,3 +50,12 @@ function suma(){
     document.write('El producto es ');
     document.write(producto);
 };
+function ifsentence(){
+    var nombre;
+    var nota;
+    nombre = prompt('Ingresa tu nombre:', '');
+    nota = prompt('Ingresa tu nota:', '');
+    if (nota >= 4) {
+        document.write(nombre + ' está aprobado con un ' + nota);
+    }
+};
