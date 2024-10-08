@@ -93,7 +93,7 @@ HTML;
             <body>
                 <h2>Error al insertar el producto</h2>
                 <p>Error: {$e->getMessage()}</p>
-                <a href="formulario_productos.html">Volver al formulario</a>
+                <a href="formulario_productos_v2.html">Volver al formulario</a>
             </body>
             </html>
 HTML;

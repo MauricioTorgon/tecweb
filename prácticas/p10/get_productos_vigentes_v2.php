@@ -40,7 +40,9 @@
             // se obtienen los datos de la fila en forma de arreglo
             var data = document.getElementById(rowId).querySelectorAll(".row-data");
 
-
+            var idN = event.target.parentNode.parentNode.id;
+            var id = idN.split('-')[1];  
+            console.log(id)
             var name = data[0].innerHTML;
             var marca = data[1].innerHTML;
             var modelo = data[2].innerHTML;
@@ -51,10 +53,10 @@
 
             alert("Name: " + name + "\nMarca: " + marca +"\nModelo: " +modelo +"\nPrecio: " +precio +"\nUnidades: "+unidades +"\nImgen: "+imagen);
 
-            send2form(name, marca, modelo, precio, detalles, unidades,imagen);
+            send2form(id, name, marca, modelo, precio, detalles, unidades,imagen);
         }
-        function send2form(name, marca, modelo, precio, detalles, unidades,imagen) {     //form) { 
-            var urlForm = "http://localhost/tecweb/prácticas/p10/formulario_productos_v2.php";
+        function send2form(id, name, marca, modelo, precio, detalles, unidades,imagen) {     //form) { 
+            var urlForm = "http://localhost/tecweb/Practicas/p10/formulario_productos_v3.php";
             var propName = "nombre="+name;
             var propAge = "marca="+marca;
             var porpMod = "modelo="+modelo;
@@ -62,7 +64,8 @@
             var propUnidades = "unidades="+unidades;
             var propDetalles = "detalles="+detalles;
             var propImg = "imagen="+imagen;
-            window.open(urlForm+"?"+propName+"&"+propAge+"&"+porpMod+"&"+propPrecio+"&"+propUnidades+"&"+propDetalles+"&"+propImg);
+            var propID = "id="+id;
+            window.open(urlForm+"?"+propName+"&"+propAge+"&"+porpMod+"&"+propPrecio+"&"+propUnidades+"&"+propDetalles+"&"+propImg+"&"+propID);
         }
     </script>
     <h3>PRODUCTOS</h3>
@@ -87,9 +90,9 @@
             </thead>
             <tbody>
             <?php 
-            $index = 1; 
+            
             foreach ($rows as $row) : ?>
-                <tr id="row-<?= $index ?>">
+                <tr id="row-<?= $row['id'] ?>">
                     <th scope="row"><?= htmlspecialchars($row['id']) ?></th>
                     <td class="row-data"><?= htmlspecialchars($row['nombre']) ?></td>
                     <td class="row-data"><?= htmlspecialchars($row['marca']) ?></td>
@@ -105,7 +108,7 @@
                     </td>
                 </tr>
             <?php 
-                $index++; 
+               
             endforeach; ?>
             </tbody>
         </table>

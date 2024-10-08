@@ -68,9 +68,10 @@
 <body>
 
     <div class="container">
-        <h2>Registrar ElectronicosS</h2>
-        <form id="formulario" action="http://localhost/tecweb/prácticas/p10/set_producto_v2.php" method="POST" enctype="multipart/form-data">
-            
+        <h2>Registrar album</h2>
+        <form id="formulario" action="http://localhost/tecweb/prácticas/p10/update_producto.php" method="POST" enctype="multipart/form-data">
+    
+            <input type="hidden" id="id" name="id" value="<?= !empty($_POST['id'])?$_POST['id']:$_GET['id'] ?>">
             <div class="form-group">
                 <label for="nombre">Nombre del Producto:</label>
                 <input type="text" id="nombre" name="nombre"  value="<?= !empty($_POST['nombre'])?$_POST['nombre']:$_GET['nombre'] ?>" required>
@@ -81,9 +82,9 @@
                 <select id="marca" name="marca" required>
                     <option value="">Selecciona una marca</option>
                     <option value="Sony">Sony</option>
-                    <option value="Bose">Atlantic</option>
-                    <option value="Sennheiser">Unknow</option>
-                    <option value="Apple">Universal</option>
+                    <option value="Atlantic">Atlantic</option>
+                    <option value="Unknow">Unknow</option>
+                    <option value="Universal">Universal</option>
                 </select>
             </div>
 
@@ -109,7 +110,7 @@
 
             <div class="form-group">
                 <label for="imagen">Ruta de la Imagen:</label>
-                <input type="text" id="imagen" name="imagen" placeholder="ej: /img/defecto.png">
+                <input type="text" id="imagen" name="imagen" placeholder="ej: /img/producto.jpg">
             </div>
 
             <div class="form-group">
@@ -165,7 +166,7 @@
 
             // Validación de la imagen (opcional, usar imagen por defecto si no se proporciona)
             if (imagen === "") {
-                document.getElementById('imagen').value = "/img/defecto.png"; // Imagen por defecto
+                document.getElementById('imagen').value = "/img/default.jpg"; // Imagen por defecto
             }
         });
     </script>
