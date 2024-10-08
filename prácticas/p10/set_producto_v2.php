@@ -1,72 +1,107 @@
 <?php
-// Mostrar datos recibidos para depuración
-echo '<pre>';
-print_r($_POST);
-print_r($_FILES);
-echo '</pre>';
+// Conexión a la base de datos 
+$host = 'localhost';
+$dbname = 'marketzone';
+$user = 'root';
+$pass = '12345678a';
 
-// Establecemos el encabezado para codificación UTF-8
-header("Content-Type: text/html; charset=utf-8");
-
-// Validar si los campos han sido enviados antes de acceder a ellos
-$nombre = isset($_POST['nombre']) ? $_POST['nombre'] : null;
-$marca  = isset($_POST['marca']) ? $_POST['marca'] : null;
-$modelo = isset($_POST['modelo']) ? $_POST['modelo'] : null;
-$precio = isset($_POST['precio']) ? $_POST['precio'] : null;
-$detalles = isset($_POST['detalles']) ? $_POST['detalles'] : null;
-$unidades = isset($_POST['unidades']) ? $_POST['unidades'] : null;
-$imagen = isset($_FILES['imagen']['name']) ? $_FILES['imagen']['name'] : null;
-
-// Verificar que todos los campos requeridos están presentes
-if (!$nombre || !$marca || !$modelo || !$precio || !$detalles || !$unidades || !$imagen) {
-    die('<p>Error: Todos los campos son obligatorios.</p>');
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Error de conexión: " . $e->getMessage());
 }
 
-// Validación de imagen subida
-$directorioImagen = 'img/';
-$imagenRuta = $directorioImagen . basename($imagen);
+// Función para validar los datos
+function validarDatos($nombre, $marca, $modelo, $pdo) {
+    $query = "SELECT COUNT(*) FROM productos WHERE nombre = :nombre AND marca = :marca AND modelo = :modelo";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':nombre', $nombre);
+    $stmt->bindParam(':marca', $marca);
+    $stmt->bindParam(':modelo', $modelo);
+    $stmt->execute();
+    $existe = $stmt->fetchColumn();
 
-// Mover imagen subida al servidor
-if (!move_uploaded_file($_FILES['imagen']['tmp_name'], $imagenRuta)) {
-    die('<p>Error al subir la imagen.</p>');
+    return $existe > 0;
 }
 
-// Conexión a la base de datos
-@$link = new mysqli('localhost', 'root', '12345678a', 'marketzone');
-if ($link->connect_errno) {
-    die('<p>Falló la conexión: ' . $link->connect_error . '</p>');
-}
+// Validar que se envió el formulario correctamente
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Recibir los datos del formulario
+    $nombre = $_POST['nombre'];
+    $marca = $_POST['marca'];
+    $modelo = $_POST['modelo'];
+    $precio = $_POST['precio'];
+    $detalles = $_POST['detalles'];
+    $unidades = $_POST['unidades'];
+    $imagen = $_POST['imagen'];
 
-// Validar que el nombre, modelo y marca no existan ya en la BD
-$sql = "SELECT * FROM productos WHERE nombre = '$nombre' AND marca = '$marca' AND modelo = '$modelo'";
-$result = $link->query($sql);
-
-if ($result->num_rows > 0) {
-    echo '<p>Ya existe un producto con el mismo nombre, marca y modelo.</p>';
-} else {
-    /*
-    // Insertar nuevo producto en la base de datos con la columna 'eliminado' en 0
-    $sql = "INSERT INTO productos (nombre, marca, modelo, precio, detalles, unidades, imagen, eliminado) 
-            VALUES ('$nombre', '$marca', '$modelo', $precio, '$detalles', $unidades, '$imagenRuta', 0)";*/
-    
-    $sql = "INSERT INTO productos (nombre, marca, modelo, precio, detalles, unidades, imagen) 
-        VALUES ('$nombre', '$marca', '$modelo', $precio, '$detalles', $unidades, '$imagenRuta')";   
-            
-    if ($link->query($sql)) {
-        echo '<p>Producto registrado con éxito:</p>';
-        echo '<ul>';
-        echo '<li>Nombre: ' . $nombre . '</li>';
-        echo '<li>Marca: ' . $marca . '</li>';
-        echo '<li>Modelo: ' . $modelo . '</li>';
-        echo '<li>Precio: ' . $precio . '</li>';
-        echo '<li>Detalles: ' . $detalles . '</li>';
-        echo '<li>Unidades: ' . $unidades . '</li>';
-        echo '<li>Imagen: <img src="' . $imagenRuta . '" alt="Imagen del producto" width="100" /></li>';
-        echo '</ul>';
+    // Validar que no exista ya un producto con el mismo nombre, marca y modelo
+    if (validarDatos($nombre, $marca, $modelo, $pdo)) {
+        echo <<<HTML
+        <html>
+        <head><title>Error</title></head>
+        <body>
+            <h2>Error al insertar el producto</h2>
+            <p>El producto con el nombre, marca y modelo ya existe en la base de datos.</p>
+            <a href="formulario_productos.html">Volver al formulario</a>
+        </body>
+        </html>
+HTML;
     } else {
-        echo '<p>Error al insertar el producto: ' . $link->error . '</p>';
-    }
-}
+        // Insertar el nuevo producto en la base de datos, con 'eliminado' en 0
+        //$query = "INSERT INTO productos (nombre, marca, modelo, precio, detalles, unidades, imagen, eliminado) 
+        //          VALUES (:nombre, :marca, :modelo, :precio, :detalles, :unidades, :imagen, 0)";
+        $query = "INSERT INTO productos (nombre, marca, modelo, precio, detalles, unidades, imagen) 
+                    VALUES (:nombre, :marca, :modelo, :precio, :detalles, :unidades, :imagen)";
+        $stmt = $pdo->prepare($query);
+        
+        try {
+            $stmt->bindParam(':nombre', $nombre);
+            $stmt->bindParam(':marca', $marca);
+            $stmt->bindParam(':modelo', $modelo);
+            $stmt->bindParam(':precio', $precio);
+            $stmt->bindParam(':detalles', $detalles);
+            $stmt->bindParam(':unidades', $unidades);
+            $stmt->bindParam(':imagen', $imagen);
+            
+            $stmt->execute();
 
-$link->close();
+            // Mostrar un resumen de los datos insertados
+            echo <<<HTML
+            <html>
+            <head><title>Producto Insertado</title></head>
+            <body>
+                <h2>Producto registrado con éxito</h2>
+                <p><strong>Nombre:</strong> {$nombre}</p>
+                <p><strong>Marca:</strong> {$marca}</p>
+                <p><strong>Modelo:</strong> {$modelo}</p>
+                <p><strong>Precio:</strong> {$precio}</p>
+                <p><strong>Detalles:</strong> {$detalles}</p>
+                <p><strong>Unidades:</strong> {$unidades}</p>
+                <p><strong>Ruta de la imagen:</strong> {$imagen}</p>
+                <p><strong>Estado (Eliminado):</strong> 0</p>
+                <a href="formulario_productos.html">Registrar otro producto</a>
+            </body>
+            </html>
+HTML;
+        } catch (PDOException $e) {
+            // Mostrar mensaje de error si ocurre algún problema al insertar
+            echo <<<HTML
+            <html>
+            <head><title>Error</title></head>
+            <body>
+                <h2>Error al insertar el producto</h2>
+                <p>Error: {$e->getMessage()}</p>
+                <a href="formulario_productos.html">Volver al formulario</a>
+            </body>
+            </html>
+HTML;
+        }
+    }
+} else {
+    // Redirigir al formulario si no se ha enviado un POST
+    header('Location: formulario_productos.html');
+    exit();
+}
 ?>
