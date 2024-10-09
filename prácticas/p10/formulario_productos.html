@@ -73,7 +73,7 @@
             
             <div class="form-group">
                 <label for="nombre">Nombre del Producto:</label>
-                <input type="text" id="nombre" name="nombre"  value="<?= !empty($_POST['nombre'])?$_POST['nombre']:$_GET['nombre'] ?>" required>
+                <input type="text" id="nombre" name="nombre" required>
             </div>
 
             <div class="form-group">
@@ -81,30 +81,30 @@
                 <select id="marca" name="marca" required>
                     <option value="">Selecciona una marca</option>
                     <option value="Sony">Sony</option>
-                    <option value="Bose">Atlantic</option>
-                    <option value="Sennheiser">Unknow</option>
-                    <option value="Apple">Universal</option>
+                    <option value="Atlantic">Atlantic</option>
+                    <option value="Unknow">Unknow</option>
+                    <option value="Universal">Universal</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label for="modelo">Modelo:</label>
-                <input type="text" id="modelo" name="modelo"  value="<?= !empty($_POST['modelo'])?$_POST['modelo']:$_GET['modelo'] ?>" required>
+                <input type="text" id="modelo" name="modelo" required>
             </div>
 
             <div class="form-group">
                 <label for="precio">Precio:</label>
-                <input type="number" id="precio" name="precio" step="0.01" value="<?= !empty($_POST['precio'])?$_POST['precio']:$_GET['precio'] ?>" required>
+                <input type="number" id="precio" name="precio" step="0.01" required>
             </div>
 
             <div class="form-group">
                 <label for="detalles">Detalles:</label>
-                <textarea id="detalles" name="detalles" rows="4" >"<?= !empty($_POST['detalles'])?$_POST['detalles']:$_GET['detalles'] ?>" </textarea>
+                <textarea id="detalles" name="detalles" rows="4"></textarea>
             </div>
 
             <div class="form-group">
                 <label for="unidades">Unidades disponibles:</label>
-                <input type="number" id="unidades" name="unidades" value="<?= !empty($_POST['unidades'])?$_POST['unidades']:$_GET['unidades'] ?>" required>
+                <input type="number" id="unidades" name="unidades" required>
             </div>
 
             <div class="form-group">

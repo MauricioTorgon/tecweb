@@ -3,74 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Registro de discos</title>
+    <title>Formulario de Registro de Electronicos</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            text-align: center;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .form-group textarea {
-            resize: vertical;
-        }
-        .form-group input[type="number"]::-webkit-outer-spin-button,
-        .form-group input[type="number"]::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-        .form-group button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .form-group button:hover {
-            background-color: #218838;
-        }
-        select{
-            width: 50vh;
-            border: solid 1px #ccc;
-            padding: 5px;
-            border-radius: 10px;
-        }
-    </style>
+    /* Estilo general */
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f0f2f5;
+        margin: 0;
+        padding: 20px;
+    }
+
+    /* Contenedor del formulario */
+    .container {
+        max-width: 600px;
+        margin: 40px auto;
+        background-color: #ffffff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    /* Efecto hover sobre el contenedor */
+    .container:hover {
+        transform: scale(1.02);
+    }
+
+    /* Título */
+    h2 {
+        text-align: center;
+        font-size: 28px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    /* Estilo de los grupos del formulario */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 5px;
+        font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        font-size: 16px;
+        color: #333;
+        transition: border 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        border-color: #007bff;
+        background-color: #ffffff;
+        outline: none;
+    }
+
+    .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+    }
+
+    /* Ocultar botones de número en Chrome */
+    .form-group input[type="number"]::-webkit-outer-spin-button,
+    .form-group input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Estilo del botón de envío */
+    .form-group button {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: 600;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .form-group button:hover {
+        background-color: #0056b3;
+        transform: translateY(-2px);
+    }
+
+    /* Estilo de los selects */
+    select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        color: #333;
+        font-size: 16px;
+        transition: border 0.3s ease;
+    }
+
+    select:focus {
+        border-color: #007bff;
+        background-color: #ffffff;
+        outline: none;
+    }
+</style>
+
 </head>
 <body>
 
     <div class="container">
-        <h2>Registrar album</h2>
-        <form id="formulario" action="http://localhost/tecweb/prácticas/p09/set_producto_v2.php" method="POST" enctype="multipart/form-data">
-            
+        <h2>Registrar Electronico</h2>
+        <form id="formulario" action="http://localhost/tecweb/prácticas/p10/update.php" method="POST" enctype="multipart/form-data">
+    
+            <input type="hidden" id="id" name="id" value="<?= !empty($_POST['id'])?$_POST['id']:$_GET['id'] ?>">
             <div class="form-group">
                 <label for="nombre">Nombre del Producto:</label>
                 <input type="text" id="nombre" name="nombre"  value="<?= !empty($_POST['nombre'])?$_POST['nombre']:$_GET['nombre'] ?>" required>
@@ -79,11 +136,11 @@
             <div class="form-group">
                 <label for="marca">Marca:</label>
                 <select id="marca" name="marca" required>
-                    <option value="">Selecciona una marca</option>
+                    <option value="LG">Selecciona una marca</option>
                     <option value="Sony">Sony</option>
-                    <option value="Bose">Atlantic</option>
-                    <option value="Sennheiser">Unknow</option>
-                    <option value="Apple">Universal</option>
+                    <option value="Atvio">Atvio</option>
+                    <option value="Huawei">Huawei</option>
+                    <option value="Desconocido">Desconocido</option>
                 </select>
             </div>
 
