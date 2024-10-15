@@ -5,128 +5,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Registro de Electronicos</title>
     <style>
-    /* Estilo general */
-    body {
+            body {
         font-family: 'Roboto', sans-serif;
-        background-color: #f0f2f5;
+        background-color: #121212;
+        color: #e0e0e0;
         margin: 0;
         padding: 20px;
+        line-height: 1.6;
     }
 
-    /* Contenedor del formulario */
     .container {
-        max-width: 600px;
-        margin: 40px auto;
-        background-color: #ffffff;
+        max-width: 700px;
+        margin: 0 auto;
+        background-color: #1e1e1e;
         padding: 25px;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 255, 255, 0.2);
+        border: 1px solid #00ccff;
     }
 
-    /* Efecto hover sobre el contenedor */
-    .container:hover {
-        transform: scale(1.02);
-    }
-
-    /* Título */
     h2 {
         text-align: center;
+        color: #00ccff;
         font-size: 28px;
-        color: #333;
+        letter-spacing: 1.2px;
         margin-bottom: 20px;
     }
 
-    /* Estilo de los grupos del formulario */
     .form-group {
         margin-bottom: 20px;
     }
 
     .form-group label {
         display: block;
+        margin-bottom: 8px;
+        color: #00ccff;
         font-size: 14px;
-        color: #555;
-        margin-bottom: 5px;
-        font-weight: 600;
     }
 
     .form-group input,
     .form-group textarea {
         width: 100%;
         padding: 12px;
-        border: 1px solid #ddd;
+        border: 2px solid #444;
+        background-color: #2b2b2b;
+        color: #e0e0e0;
         border-radius: 8px;
-        background-color: #f9f9f9;
         font-size: 16px;
-        color: #333;
-        transition: border 0.3s ease;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-        border-color: #007bff;
-        background-color: #ffffff;
-        outline: none;
+        transition: all 0.3s ease;
     }
 
     .form-group textarea {
         resize: vertical;
-        min-height: 120px;
+        min-height: 150px;
     }
 
-    /* Ocultar botones de número en Chrome */
-    .form-group input[type="number"]::-webkit-outer-spin-button,
-    .form-group input[type="number"]::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
+    .form-group input:focus,
+    .form-group textarea:focus {
+        border-color: #00ccff;
+        outline: none;
+        box-shadow: 0 0 10px rgba(0, 204, 255, 0.5);
     }
 
-    /* Estilo del botón de envío */
     .form-group button {
-        display: block;
         width: 100%;
-        padding: 15px;
-        background-color: #007bff;
-        color: white;
+        padding: 12px;
+        background: linear-gradient(90deg, #00ccff, #00ff88);
+        color: #121212;
+        font-size: 18px;
         border: none;
         border-radius: 8px;
         cursor: pointer;
-        font-size: 18px;
-        font-weight: 600;
-        transition: background-color 0.3s ease, transform 0.3s ease;
+        font-weight: bold;
+        transition: background 0.3s ease, transform 0.2s ease;
     }
 
     .form-group button:hover {
-        background-color: #0056b3;
-        transform: translateY(-2px);
+        background: linear-gradient(90deg, #00ff88, #00ccff);
+        transform: scale(1.05);
     }
 
-    /* Estilo de los selects */
     select {
         width: 100%;
-        padding: 10px;
-        border: 1px solid #ddd;
+        padding: 12px;
+        border: 2px solid #444;
+        background-color: #2b2b2b;
+        color: #e0e0e0;
         border-radius: 8px;
-        background-color: #f9f9f9;
-        color: #333;
         font-size: 16px;
-        transition: border 0.3s ease;
+        transition: all 0.3s ease;
     }
 
     select:focus {
-        border-color: #007bff;
-        background-color: #ffffff;
+        border-color: #00ccff;
         outline: none;
+        box-shadow: 0 0 10px rgba(0, 204, 255, 0.5);
     }
-</style>
 
+    </style>
+        
 </head>
 <body>
 
     <div class="container">
         <h2>Registrar Electronico</h2>
         <form id="formulario" action="http://localhost/tecweb/prácticas/p10/update.php" method="POST" enctype="multipart/form-data">
-    
             <input type="hidden" id="id" name="id" value="<?= !empty($_POST['id'])?$_POST['id']:$_GET['id'] ?>">
             <div class="form-group">
                 <label for="nombre">Nombre del Producto:</label>
@@ -136,11 +119,11 @@
             <div class="form-group">
                 <label for="marca">Marca:</label>
                 <select id="marca" name="marca" required>
-                    <option value="LG">Selecciona una marca</option>
+                    <option value="">Selecciona una marca</option>
                     <option value="Sony">Sony</option>
-                    <option value="Atvio">Atvio</option>
-                    <option value="Huawei">Huawei</option>
-                    <option value="Desconocido">Desconocido</option>
+                    <option value="LG">LG</option>
+                    <option value="Atvio">Unknow</option>
+                    <option value="Apple">Apple</option>
                 </select>
             </div>
 
@@ -222,7 +205,7 @@
 
             // Validación de la imagen (opcional, usar imagen por defecto si no se proporciona)
             if (imagen === "") {
-                document.getElementById('imagen').value = "/img/default.jpg"; // Imagen por defecto
+                document.getElementById('imagen').value = "img/defecto.png"; // Imagen por defecto
             }
         });
     </script>

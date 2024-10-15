@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Registro de discos</title>
+    <title>Formulario de Registro de Electronicos</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -81,9 +81,9 @@
                 <select id="marca" name="marca" required>
                     <option value="">Selecciona una marca</option>
                     <option value="Sony">Sony</option>
-                    <option value="Atlantic">Atlantic</option>
-                    <option value="Unknow">Unknow</option>
-                    <option value="Universal">Universal</option>
+                    <option value="LG">LG</option>
+                    <option value="Atvio">Unknow</option>
+                    <option value="Apple">Apple</option>
                 </select>
             </div>
 
@@ -165,7 +165,7 @@
 
             // Validación de la imagen (opcional, usar imagen por defecto si no se proporciona)
             if (imagen === "") {
-                document.getElementById('imagen').value = "/img/default.jpg"; // Imagen por defecto
+                document.getElementById('imagen').value = "img/defecto.png"; // Imagen por defecto
             }
         });
     </script>

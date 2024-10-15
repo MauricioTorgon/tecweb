@@ -6,7 +6,7 @@
     $tope = isset($_GET['tope']) ? $_GET['tope'] : null;
 
     /* SE CREA EL OBJETO DE CONEXION */
-    @$link = new mysqli('localhost', 'root', 'IMREDj2128@', 'marketzone');
+    @$link = new mysqli('localhost', 'root', '12345678a', 'marketzone');
 
     /** comprobar la conexión */
     if ($link->connect_errno) {
@@ -14,7 +14,7 @@
     }
 
     /* Crear una tabla que no devuelve un conjunto de resultados */
-    if ($result = $link->query("SELECT * FROM productos " . (!empty($tope) ? " AND unidades <= {$tope}" : ""))) {
+    if ($result = $link->query("SELECT * FROM productos" . (!empty($tope) ? " WHERE unidades <= {$tope}" : ""))) {
         /* Almacenar todos los resultados en un arreglo */
         $rows = [];
         while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
@@ -40,7 +40,9 @@
             // se obtienen los datos de la fila en forma de arreglo
             var data = document.getElementById(rowId).querySelectorAll(".row-data");
 
-
+            var idN = event.target.parentNode.parentNode.id;
+            var id = idN.split('-')[1];  
+            console.log(id)
             var name = data[0].innerHTML;
             var marca = data[1].innerHTML;
             var modelo = data[2].innerHTML;
@@ -51,10 +53,11 @@
 
             alert("Name: " + name + "\nMarca: " + marca +"\nModelo: " +modelo +"\nPrecio: " +precio +"\nUnidades: "+unidades +"\nImgen: "+imagen);
 
-            send2form(name, marca, modelo, precio, detalles, unidades,imagen);
+            send2form(id, name, marca, modelo, precio, detalles, unidades,imagen);
         }
-        function send2form(name, marca, modelo, precio, detalles, unidades,imagen) {     //form) { 
-            var urlForm = "http://localhost/tecweb/Practicas/p10/formulario_productos_v3.php";
+
+        function send2form(id, name, marca, modelo, precio, detalles, unidades,imagen) {     //form) { 
+            var urlForm = "http://localhost/tecweb/prácticas/p10/formulario_productos_v3.php";
             var propName = "nombre="+name;
             var propAge = "marca="+marca;
             var porpMod = "modelo="+modelo;
@@ -62,7 +65,8 @@
             var propUnidades = "unidades="+unidades;
             var propDetalles = "detalles="+detalles;
             var propImg = "imagen="+imagen;
-            window.open(urlForm+"?"+propName+"&"+propAge+"&"+porpMod+"&"+propPrecio+"&"+propUnidades+"&"+propDetalles+"&"+propImg);
+            var propID = "id="+id;
+            window.open(urlForm+"?"+propName+"&"+propAge+"&"+porpMod+"&"+propPrecio+"&"+propUnidades+"&"+propDetalles+"&"+propImg+"&"+propID);
         }
     </script>
     <h3>PRODUCTOS</h3>

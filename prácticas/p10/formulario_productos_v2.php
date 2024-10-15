@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Registro de discos</title>
+    <title>Formulario de Registro de electronicos</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -81,9 +81,9 @@
                 <select id="marca" name="marca" required>
                     <option value="">Selecciona una marca</option>
                     <option value="Sony">Sony</option>
-                    <option value="Bose">Atlantic</option>
-                    <option value="Sennheiser">Unknow</option>
-                    <option value="Apple">Universal</option>
+                    <option value="LG">LG</option>
+                    <option value="Atvio">Unknow</option>
+                    <option value="Apple">Apple</option>
                 </select>
             </div>
 
