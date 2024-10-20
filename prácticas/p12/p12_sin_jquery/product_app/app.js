@@ -2,10 +2,10 @@
 var baseJSON = {
     "precio": 0.0,
     "unidades": 1,
-    "modelo": "XX-000",
+    "modelo": "XX000",
     "marca": "NA",
     "detalles": "NA",
-    "imagen": "img/default.png"
+    "imagen": "img/defecto.png"
   };
 
 function init() {
@@ -155,43 +155,55 @@ function agregarProducto(e) {
     finalJSON['nombre'] = document.getElementById('name').value;
     // SE OBTIENE EL STRING DEL JSON FINAL
     productoJsonString = JSON.stringify(finalJSON,null,2);
-            /*
-        // SE OBTIENE EL ARRAY DE PRODUCTOS A PARTIR DE UN STRING JSON
-        let productos = JSON.parse(client.responseText);
 
-        // SE VERIFICA SI HAY PRODUCTOS ENCONTRADOS
-        if (productos.length > 0) {
-            let template = '';
-            
-            // RECORRER EL ARRAY DE PRODUCTOS Y CREAR UNA FILA PARA CADA UNO
-            productos.forEach(function(producto) {
-                let descripcion = '';
-                descripcion += '<li>precio: ' + producto.precio + '</li>';
-                descripcion += '<li>unidades: ' + producto.unidades + '</li>';
-                descripcion += '<li>modelo: ' + producto.modelo + '</li>';
-                descripcion += '<li>marca: ' + producto.marca + '</li>';
-                descripcion += '<li>detalles: ' + producto.detalles + '</li>';
-                
-                // PLANTILLA DE LA FILA A INSERTAR EN LA TABLA
-                template += `
-                    <tr>
-                        <td>${producto.id}</td>
-                        <td>${producto.nombre}</td>
-                        <td><ul>${descripcion}</ul></td>
-                    </tr>
-                `;
-            });
+    // SE CREA EL OBJETO DE CONEXIÓN ASÍNCRONA AL SERVIDOR
+    var client = getXMLHttpRequest();
 
-            // INSERTAR LA PLANTILLA EN EL ELEMENTO CON ID "productos"
-            document.getElementById("productos").innerHTML = template;
-        } else {
-            // SI NO HAY PRODUCTOS COINCIDENTES, MOSTRAR UN MENSAJE
-            document.getElementById("productos").innerHTML = '<tr><td colspan="3">No se encontraron productos</td></tr>';
-        }*/
+    let nombre = finalJSON["nombre"];
+    let modelo = finalJSON["modelo"];
+    let precio = finalJSON["precio"];
+    let detalles = finalJSON["detalles"];
+    let unidades = finalJSON["unidades"];
+    let imagen = finalJSON["imagen"];
+
+    // Validación del nombre (requerido y máximo 100 caracteres)
+    if (nombre === "" || nombre.length > 100) {
+        alert("El nombre del producto es requerido y debe tener 100 caracteres o menos.");
+        event.preventDefault();
+        return;
+    }
+    
+
+    // Validación del modelo (alfanumérico y máximo 25 caracteres)
+    if (!/^[a-zA-Z0-9]+$/.test(modelo) || modelo.length > 25) {
+        alert("El modelo es requerido, debe ser alfanumérico y tener 25 caracteres o menos.");
+        event.preventDefault();
+        return;
+    }
+
+    // Validación del precio (mayor a 99.99)
+    if (isNaN(precio) || precio <= 99.99) {
+        alert("El precio es requerido y debe ser mayor a 99.99.");
+        event.preventDefault();
+        return;
+    }
+
+    // Validación de los detalles (opcional, pero máximo 250 caracteres)
+    if (detalles.length > 250) {
+        alert("Los detalles no deben exceder los 250 caracteres.");
+        event.preventDefault();
+        return;
+    }
+
+    // Validación de unidades (requerido y mayor o igual a 0)
+    if (isNaN(unidades) || unidades < 0) {
+        alert("Las unidades deben ser mayores o iguales a 0.");
+        event.preventDefault();
+        return;
+    }
  //EN CASO DE NO HABER ERRORES, SE ENVIAR EL PRODUCTO A AGREGAR
  
     // SE CREA EL OBJETO DE CONEXIÓN ASÍNCRONA AL SERVIDOR
-    var client = getXMLHttpRequest();
     client.open('POST', './backend/product-add.php', true);
     client.setRequestHeader('Content-Type', "application/json;charset=UTF-8");
     client.onreadystatechange = function () {
