@@ -111,6 +111,44 @@ function agregarProducto() {
     finalJSON['nombre'] = $('#name').val();
     productoJsonString = JSON.stringify(finalJSON, null, 2);
 
+    // Validaciones
+    let nombre = finalJSON['nombre'];
+    let modelo = finalJSON['modelo'];
+    let precio = finalJSON['precio'];
+    let detalles = finalJSON['detalles'];
+    let unidades = finalJSON['unidades'];
+
+    // Validación del nombre (requerido y máximo 100 caracteres)
+    if (!nombre || nombre.length > 100) {
+        alert('El nombre del producto es requerido y debe tener 100 caracteres o menos.');
+        return; // Detiene la función si no se cumple la validación
+    }
+
+    // Validación del modelo (alfanumérico y máximo 25 caracteres)
+    if (!/^[a-zA-Z0-9]+$/.test(modelo) || modelo.length > 25) {
+        alert('El modelo es requerido, debe ser alfanumérico y tener 25 caracteres o menos.');
+        return; // Detiene la función si no se cumple la validación
+    }
+
+    // Validación del precio (mayor a 99.99)
+    if (isNaN(precio) || precio <= 99.99) {
+        alert('El precio es requerido y debe ser mayor a 99.99.');
+        return; // Detiene la función si no se cumple la validación
+    }
+
+    // Validación de los detalles (máximo 250 caracteres)
+    if (detalles.length > 250) {
+        alert('Los detalles no deben exceder los 250 caracteres.');
+        return; // Detiene la función si no se cumple la validación
+    }
+
+    // Validación de las unidades (requerido y mayor o igual a 0)
+    if (isNaN(unidades) || unidades < 0) {
+        alert('Las unidades deben ser mayores o iguales a 0.');
+        return; // Detiene la función si no se cumple la validación
+    }
+
+    // Si todas las validaciones son correctas, procede con el envío
     $.ajax({
         url: './backend/product-add.php',
         type: 'POST',
@@ -124,10 +162,11 @@ function agregarProducto() {
             `;
             $('#product-result').removeClass('d-none').addClass('d-block');
             $('#container').html(template_bar);
-            listarProductos();
+            listarProductos(); // Actualiza la lista de productos
         }
     });
 }
+
 
 // Función para eliminar producto
 $(document).on('click', '.product-delete', function() {
