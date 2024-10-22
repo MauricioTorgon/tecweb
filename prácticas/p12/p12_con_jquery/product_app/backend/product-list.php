@@ -13,7 +13,8 @@
             // SE CODIFICAN A UTF-8 LOS DATOS Y SE MAPEAN AL ARREGLO DE RESPUESTA
             foreach($rows as $num => $row) {
                 foreach($row as $key => $value) {
-                    $data[$num][$key] = utf8_encode($value);
+                    $data[$num][$key] = $value;
+                    //Si ya está correctamente configurada la DB no hace falta. De hecho, perjudica utf8_encode($value);
                 }
             }
         }

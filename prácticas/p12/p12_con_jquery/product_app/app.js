@@ -60,6 +60,7 @@ function listarProductos() {
                             </td>
                         </tr>
                     `;
+                    console.log("Producto:", producto);
                 });
                 $('#products').html(template);
             }
