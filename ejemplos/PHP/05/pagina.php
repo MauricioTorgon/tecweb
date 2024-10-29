@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo 5</title>
+</head>
+<body>
+    <?php
+    require_once __DIR__ . '/Cabecera.php';
+    require_once __DIR__ . '/Cuerpo.php';
+    require_once __DIR__ . '/Pie.php';
+
+    class Pagina {
+        private $cabecera;
+        private $cuerpo;
+        private $pie;
+
+        public function __construct($text1, $text2) {
+            $this->cabecera = new Cabecera($text1);
+            $this->cuerpo = new Cuerpo();
+            $this->pie = new Pie($text2);
+        }
+
+        public function insertar_cuerpo($text) {
+            $this->cuerpo->insertar_parrafo($text);
+        }
+
+        public function graficar() {
+            $this->cabecera->graficar();
+            $this->cuerpo->graficar();
+            $this->pie->graficar();
+        }
+    }
+    ?>
+</body>
+</html>
