@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>ProductApp</title>
+  <!-- BOOTSTRAP 4  -->
+  <link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.min.css">
+</head>
+<body>
+
+  <!-- BARRA DE NAVEGACIÓN  -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href=".">ProductApp</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto"></ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" name="search" id="search" type="search"
+          placeholder="ID, marca o descripción" aria-label="Search">
+        <button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
+      </form>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row p-4">
+      <div class="col-md-5">
+        <div class="card">
+          <div class="card-body">
+            <!-- FORMULARIO PARA AGREGAR PRODUCTO -->
+            <form id="product-form">
+              <input type="hidden" id="productId">
+              <div class="form-group">
+                <label for="name">Nombre del Producto</label>
+                <input class="form-control" type="text" id="name" placeholder="Nombre del producto"
+                  onblur="verificarEntNombre()">
+                  <div class="card my-4 bg-danger border border-dark rounded" id="name-error">
+                    <div class="card-body">
+                      <p id="name-container"></p>
+                    </div>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label for="price">Precio</label>
+                <input class="form-control" type="number" id="price" placeholder="Precio"
+                  onblur="verificarEntPrecio()">
+                  <div class="card my-4 bg-danger border border-dark rounded" id="price-error">
+                    <div class="card-body">
+                      <p id="price-container"></p>
+                    </div>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label for="units">Unidades</label>
+                <input class="form-control" type="number" id="units" placeholder="Unidades"
+                  onblur="verificarEntUnidades()">
+                  <div class="card my-4 bg-danger border border-dark rounded" id="units-error">
+                    <div class="card-body">
+                      <p id="units-container"></p>
+                    </div>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label for="model">Modelo del producto</label>
+                <input class="form-control" type="text" id="model" placeholder="Modelo del producto"
+                  onblur="verificarEntModelo()">
+                  <div class="card my-4 bg-danger border border-dark rounded" id="model-error">
+                    <div class="card-body">
+                      <p id="model-container"></p>
+                    </div>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label for="brand">Marca del producto</label><br />
+                <input class="form-control" type="text" id="brand" placeholder="Marca del producto"
+                  onblur="verificarEntMarca()">
+                  <div class="card my-4 bg-danger border border-dark rounded" id="brand-error">
+                    <div class="card-body">
+                      <p id="brand-container"></p>
+                    </div>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label for="details">Detalles del Producto</label>
+                <textarea class="form-control" placeholder="Detalles del producto" id="details"
+                  onblur="verificarEntDetalles()"></textarea>
+                  <div class="card my-4 bg-danger border border-dark rounded" id="details-error">
+                    <div class="card-body">
+                      <p id="details-container"></p>
+                    </div>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label for="image">Imagen del producto</label>
+                <input class="form-control" type="text" id="image" placeholder="img/defecto.png"
+                  onblur="verificarEntImagen()">
+                  <div class="card my-4 bg-danger border border-dark rounded" id="image-error">
+                    <div class="card-body">
+                      <p id="image-container"></p>
+                    </div>
+                  </div>
+              </div>
+              <input type="hidden" id="productId">
+              <button class="btn btn-primary btn-block text-center" type="submit">
+                Agregar Producto
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- TABLA  -->
+      <div class="col-md-7">
+        <div class="card my-4 " id="product-result">
+          <div class="card-body">
+            <!-- RESULTADO -->
+            <ul id="container"></ul>
+          </div>
+        </div>
+
+        <table class="table table-bordered table-sm">
+          <thead>
+            <tr>
+              <td>Id</td>
+              <td>Nombre</td>
+              <td>Descripción</td>
+            </tr>
+          </thead>
+          <tbody id="products"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <!-- Lógica del Frontend -->
+  <script src="app.js"></script>
+  </body>
+
+</html>
