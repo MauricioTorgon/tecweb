@@ -171,24 +171,6 @@ $(document).ready(function () {
     });
   });
 
-  function equalProducts(producto) {
-    return new Promise((resolve, reject) => {
-      $.ajax({
-        url: './backend/product-list.php',
-        type: 'GET',
-        success: function (response) {
-          let products = JSON.parse(response);
-          let exists = products.some(product => producto === product.nombre);
-          resolve(exists); // Devolver true si el producto existe, de lo contrario false
-        },
-        error: function (error) {
-          reject(error); // Manejo de errores
-        }
-      });
-    });
-  }
-
-
   //Listar productos 
   function fetchProducts() {
     $.ajax({
@@ -311,35 +293,62 @@ function verificarEntMarca() {
 }
 
 
+// Corrección para la función verificarEntModelo:
 function verificarEntModelo() {
   const modelo = document.getElementById('model').value;
-  const regex = /^[a-zA-Z0-9-]+$/; // Alfanumérico y guion
-  let Valido = true;
+  const regex = /^[a-zA-Z0-9-]+$/; // Solo letras, números o guiones
+  $('#model-error').hide(); // Limpiar mensajes anteriores
 
-  // Limpiar mensajes anteriores
-  $('#model-container').html('<strong>');
-  $('#model-error').hide();
-
-  if (modelo == '') {
+  if (modelo === '') {
     $('#model-error').html('<strong>Insertar un modelo</strong>').show();
     return false;
   }
-
   if (modelo.length > 25) {
-    console.log('El nombre del modelo sobrepasa los 25 caracteres');
-    $('#model-container').html('<strong>El nombre del modelo sobrepasa los 25 caracteres');
-    $('#model-error</strong>').show();
-    Valido = false;
+    $('#model-error').html('<strong>El nombre del modelo no debe exceder los 25 caracteres</strong>').show();
+    return false;
   }
-
   if (!regex.test(modelo)) {
-    $('#model-container').html('<strong>Ingresa solo letras, números o guiones');
-    $('#model-error</strong>').show();
-    Valido = false;
+    $('#model-error').html('<strong>El modelo debe contener solo letras, números o guiones</strong>').show();
+    return false;
   }
-
-  return Valido;
+  return true;
 }
+
+// Verificación asíncrona de nombre
+$('#name').on('blur', function () {
+  const nombre = $('#name').val();
+  if (nombre === '') return; // No verificar si está vacío
+
+  equalProducts(nombre).then(exists => {
+    $('#name-error').hide();
+    $('#name-valid').hide();
+
+    if (exists) {
+      $('#name-valid').html('<strong>El artículo ya existe</strong>')
+        .css('background-color', 'red').show();
+    } else {
+      $('#name-valid').html('<strong>El artículo no existe</strong>')
+        .css('background-color', 'green').show();
+    }
+  }).catch(error => {
+    console.error('Error en la verificación del producto:', error);
+  });
+});
+
+async function equalProducts(producto) {
+  try {
+    const response = await $.ajax({
+      url: './backend/product-list.php',
+      type: 'GET'
+    });
+    const products = JSON.parse(response);
+    return products.some(product => producto === product.nombre);
+  } catch (error) {
+    console.error('Error al obtener productos:', error);
+    return false;
+  }
+}
+
 
 
 function verificarEntPrecio() {
@@ -361,7 +370,6 @@ function verificarEntPrecio() {
 
   return true;
 }
-
 
 
 function verificarEntDetalles() {
@@ -417,7 +425,7 @@ function verificarEntImagen() {
     return false;
   }
 
-  if (!imagen || imagen !== 'img/predeterminado.png') {
+  if (!imagen || imagen !== 'img/defecto.png') {
     $('#image-error').html('<strong>Por favor, ingresa la imagen predeterminada.</strong>').show();
     return false;
   }
