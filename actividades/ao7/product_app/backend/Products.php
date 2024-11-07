@@ -42,7 +42,9 @@ class Products extends DataBase {
         } else {
             $this->response = ['status' => 'error', 'message' => 'No se pudo eliminar el producto: ' . mysqli_error($this->conexion)];
         }
+        return $this->response; // Asegúrate de devolver la respuesta
     }
+    
 
     // Método para editar un producto
     public function edit($product) {
