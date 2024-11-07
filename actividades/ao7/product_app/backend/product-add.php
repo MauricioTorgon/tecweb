@@ -1,7 +1,7 @@
 <?php
 namespace Backend;
 
-require_once __DIR__ . '/Products.php';
+require_once __DIR__ . '/myapi/Products.php';
 
 use Products\Products;
 $productApp = new Products();// Crear una instancia de la clase Products

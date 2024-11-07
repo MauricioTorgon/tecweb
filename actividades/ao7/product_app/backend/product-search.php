@@ -1,6 +1,6 @@
 <?php
 namespace Backend;
-require_once __DIR__ . '/Products.php';
+require_once __DIR__ . '/myapi/Products.php';
 use Products\Products;
 $searchTerm = $_GET['search']; // Obtener el término de búsqueda desde la solicitud GET
 $productApp = new Products(); // Crear una instancia de la clase Products
