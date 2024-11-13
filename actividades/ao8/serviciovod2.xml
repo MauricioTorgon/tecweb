@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CatalogoVOD correo="mauricio.gonzalezt@alumno.buap.mx">
+    <perfiles>
+        <perfil usuario="Mauricio Gonzalez" idioma="Español" />
+        <perfil usuario="Maurice Gonzaloson" idioma="Inglés" />
+    </perfiles>
+    
+    <contenido>
+        <peliculas>
+            <genero nombre="Superheroes">
+                <titulo nombre="Avengers Infinity War" duracion="149 min" />
+                <titulo nombre="Hancock" duracion="92 min" />
+                <titulo nombre="Los 4 Fantásticos (2005)" duracion="106 min" />
+                <titulo nombre="Batman: El caballero de la noche" duracion="152 min" />
+            </genero>
+            <genero nombre="Animación">
+                <titulo nombre="Shrek" duracion="90 min" />
+                <titulo nombre="Shrek 2" duracion="93 min" />
+                <titulo nombre="Kimi no na wa (Your Name)" duracion="107 min" />
+                <titulo nombre="Coco" duracion="105 min" />
+            </genero>
+        </peliculas>
+        
+        <programas>
+            <genero nombre="Comedia">
+                <titulo nombre="The Big Bang Theory" duracion="22 min" />
+                <titulo nombre="Futurama" duracion="22 min" />
+                <titulo nombre="Bojack Horseman" duracion="25 min" />
+                <titulo nombre="Community" duracion="22 min" />
+            </genero>
+            <genero nombre="Anime">
+                <titulo nombre="Attack on Titan" duracion="24 min" />
+                <titulo nombre="Avatar: La leyenda de Aang" duracion="23 min" />
+                <titulo nombre="My Hero Academia" duracion="24 min" />
+                <titulo nombre="Fullmetal Alchemist: Brotherhood" duracion="24 min" />
+            </genero>
+        </programas>
+    </contenido>
+</CatalogoVOD>

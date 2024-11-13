@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CatalogoVOD>
+    <cuenta>
+        <correo>mauricio.gonzalezt@alumno.buap.mx</correo>
+        <perfiles>
+            <perfil>
+                <nombreUsuario>Mauricio Gonzalez</nombreUsuario>
+                <idioma>Español</idioma>
+            </perfil>
+            <perfil>
+                <nombreUsuario>Maurice Gonzaloson</nombreUsuario>
+                <idioma>Inglés</idioma>
+            </perfil>
+        </perfiles>
+    </cuenta>
+    
+    <contenido>
+        <peliculas>
+            <genero>
+                <nombre>Superheroes</nombre>
+                <titulos>
+                    <titulo>
+                        <nombre>Avengers Infinity War</nombre>
+                        <duracion>149 min</duracion>
+                    </titulo>
+                    <titulo>
+                        <nombre>Hancock</nombre>
+                        <duracion>92 min</duracion>
+                    </titulo>
+                    <titulo>
+                        <nombre>Los 4 Fantásticos (2005)</nombre>
+                        <duracion>106 min</duracion>
+                    </titulo>
+                    <titulo>
+                        <nombre>Batman: El caballero de la noche</nombre>
+                        <duracion>152 min</duracion>
+                    </titulo>
+                </titulos>
+            </genero>
+            <genero>
+                <nombre>Animación</nombre>
+                <titulos>
+                    <titulo>
+                        <nombre>Shrek</nombre>
+                        <duracion>90 min</duracion>
+                    </titulo>
+                    <titulo>
+                        <nombre>Shrek 2</nombre>
+                        <duracion>93 min</duracion>
+                    </titulo>
+                    <titulo>
+                        <nombre>Kimi no na wa (Your Name)</nombre>
+                        <duracion>107 min</duracion>
+                    </titulo>
+                    <titulo>
+                        <nombre>Coco</nombre>
+                        <duracion>105 min</duracion>
+                    </titulo>
+                </titulos>
+            </genero>
+        </peliculas>
+        
+        <programas>
+            <genero>
+                <nombre>Comedia</nombre>
+                <titulos>
+                    <titulo>
+                        <nombre>The Big Bang Theory</nombre>
+                        <duracion>22 min</duracion>
+                    </titulo>
+                    <titulo>
+                        <nombre>Futurama</nombre>
+                        <duracion>22 min</duracion>
+                    </titulo>
+                    <titulo>
+                        <nombre>Bojack Horseman</nombre>
+                        <duracion>25 min</duracion>
+                    </titulo>
+                    <titulo>
+                        <nombre>Community</nombre>
+                        <duracion>22 min</duracion>
+                    </titulo>
+                </titulos>
+            </genero>
+            <genero>
+                <nombre>Anime</nombre>
+                <titulos>
+                    <titulo>
+                        <nombre>Attack on Titan</nombre>
+                        <duracion>24 min</duracion>
+                    </titulo>
+                    <titulo>
+                        <nombre>Avatar: La leyenda de Aang</nombre>
+                        <duracion>23 min</duracion>
+                    </titulo>
+                    <titulo>
+                        <nombre>My Hero Academia</nombre>
+                        <duracion>24 min</duracion>
+                    </titulo>
+                    <titulo>
+                        <nombre>Fullmetal Alchemist: Brotherhood</nombre>
+                        <duracion>24 min</duracion>
+                    </titulo>
+                </titulos>
+            </genero>
+        </programas>
+    </contenido>
+</CatalogoVOD>
