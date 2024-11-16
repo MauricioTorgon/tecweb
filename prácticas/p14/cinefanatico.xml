@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE cinefanatico SYSTEM "cinefanatico.dtd">
+<cinefanatico>
+    <tarjeta noserie="12345" visitas="100" puntos="1000">
+        <nombre>Mauricio Gonzalez Torres</nombre>
+        <correo>mauricio.gonzalezt@alumno.buap.mx</correo>
+        <telefono tipo="movil">2121235110</telefono>
+    </tarjeta>
+    <tarjeta noserie="54321" visitas="5" puntos="500">
+        <nombre>Bruce Wayne</nombre>
+        <correo>soyBatman@wayne.corps.com</correo>
+    </tarjeta>
+</cinefanatico>
