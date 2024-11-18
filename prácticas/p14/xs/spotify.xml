@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Spotify xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="spotify.xsd"
+         version="1.0">
+         <Cuenta id="1" plan="premium" fechaIni="2022-02-01" fechaFin="2023-02-01">
+            <Nombre>Mauricio Gonzalez Torresk</Nombre>
+            <Correo>mauricio.gonzalezt@alumno.buap.mx</Correo>
+            <Telefono tipo="movil">0123 456 789</Telefono>
+        </Cuenta>
+        <Cuenta id="2" plan="free">
+            <Nombre>Juan Camaney</Nombre>
+            <Correo>nombre@gmail.com</Correo>
+            <Telefono tipo="movil">987 654 3210</Telefono>
+        </Cuenta>
+</Spotify>
