@@ -3,7 +3,7 @@
          xsi:noNamespaceSchemaLocation="spotify_v2.xsd"
          version="1.0">
          <Cuenta id="1" plan="premium" fechaIni="2022-02-01" fechaFin="2023-02-01">
-            <Nombre>Mauricio Gonzalez Torresk</Nombre>
+            <Nombre>Mauricio Gonzalez Torres</Nombre>
             <Correo>mauricio.gonzalezt@alumno.buap.mx</Correo>
             <Telefono tipo="movil">0123 456 789</Telefono>
         </Cuenta>
